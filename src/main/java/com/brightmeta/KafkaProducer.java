@@ -1,5 +1,7 @@
 package com.brightmeta;
 
+import org.apache.kafka.common.serialization.StringSerializer;
+
 import java.util.Properties;
 
 /**
@@ -11,5 +13,9 @@ public class KafkaProducer {
         Properties properties = new Properties();
 
         properties.setProperty("bootstrap.servers", "localhost:9092");
+        properties.setProperty("key.serializer", StringSerializer.class.getName());
+        properties.setProperty("value.serializer", StringSerializer.class.getName());
+        properties.setProperty("acks", "1");
+        properties.setProperty("retries", "3");
     }
 }
